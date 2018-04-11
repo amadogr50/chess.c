@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 //Opciones
-#define new 1;
-#define scores 2;
-#define exit 0;
+#define new 1
+#define scores 2
+#define exit 0
+/*
 //Jugadores
 #define white 0;
 #define black 1;
@@ -16,7 +17,7 @@
 #define k 6; //Rey
 
 //Variable global para el tablero
-board = [8][8];
+board[8][8];
 
 typedef struct{
     int turn;
@@ -82,26 +83,6 @@ void display_board(board){
     }
 }
 
-void init_game(){
-    int checkmate = 0;
-    int turn = 0;
-    generate_board();
-    while(checkmate == 0){
-        char move[5];
-        movement:
-        scanf("move: %c", &move);
-        if( validate_move() == 1){
-            move();
-            check_checkmate();
-            display_board();
-            finish_turn();
-        } else {
-            printf("Invalid move");
-            goto movement;
-        }
-    }
-}
-
 void generate_board(){
     piece p1 = { 1 , p };
     piece p2 = { 1 , p };
@@ -147,23 +128,44 @@ void generate_board(){
         [ T1, C1 , B1 , KING , QUEEN , B2 , C2 , T2 ],
     ]
 }
+*/
+
+void init_game(){
+    //generate_board();
+    /*while(checkmate == 0){
+        char move[5];
+        movement:
+        scanf("move: %c", &move);
+        if( validate_move() == 1){
+            move();
+            check_checkmate();
+            display_board();
+            finish_turn();
+        } else {
+            printf("Invalid move");
+            goto movement;
+        }
+    }
+    */
+}
 
 int main(void) {
-    char init;
+    int init;
+    printf("Opciones: \n\t1 - Inicar Nuevo Juego\n\t2 - Mostrar scores\n\t0 - Salir\n");
     checkInit:
-    scanf("/s", &init);
+    scanf("%d", &init);
     switch(init){
-        case new:
+        case 1:
             init_game();
             break;
-        case scores:
-            show_scores();
+        case 2:
+            //show_scores();
             break;
-        case exit:}
-            exit();
+        case 0:
+            //exit();
             break;
-        default 
-            printf("Invalid input");
+        default:
+            printf("Invalid input, try again: ");
             goto checkInit;
     }
     return 0;
