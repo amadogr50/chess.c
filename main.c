@@ -68,7 +68,9 @@ typedef struct{
 } piece;
 
 void display_board(board){
+    printf("   a   b   c   d   e   f   g   h \n");
     for (i = 0; i < 8; i++){
+        printf("%d -", i);
         for(j = 0; j < 8; j++){
             if (board[i][j] != 0){
                 printf(" %c ", board[i][j].graph);
@@ -76,6 +78,7 @@ void display_board(board){
                 printf(" - ");
             }
         }
+        printf("\n");
     }
 }
 
