@@ -1,10 +1,13 @@
 #include <stdio.h>
 
+//Opciones
 #define new 1;
 #define scores 2;
 #define exit 0;
+//Jugadores
 #define white 0;
 #define black 1;
+//Fichas
 #define p 1; //Peon
 #define c 2; //Caballo
 #define b 3; //Alfil
@@ -12,7 +15,8 @@
 #define q 5; //Reina
 #define k 6; //Rey
 
-board = [][];
+//Variable global para el tablero
+board = [8][8];
 
 typedef struct{
     int turn;
@@ -70,6 +74,7 @@ void display_board(board){
         }
     }
 }
+
 void init_game(){
     int checkmate = 0;
     int turn = 0;
@@ -91,15 +96,48 @@ void init_game(){
 }
 
 void generate_board(){
+    piece p1 = { 1 , p };
+    piece p2 = { 1 , p };
+    piece p3 = { 1 , p };
+    piece p4 = { 1 , p };
+    piece p5 = { 1 , p };
+    piece p6 = { 1 , p };
+    piece p7 = { 1 , p };
+    piece p8 = { 1 , p };
+    piece c1 = { 1 , c };
+    piece c2 = { 1 , c };
+    piece b1 = { 1 , b };
+    piece b2 = { 1 , b };
+    piece t1 = { 1 , t };
+    piece t2 = { 1 , t };
+    piece queen = { 1 , q };
+    piece king = { 1 , k };
+    piece P1 = { 2 , p} ;
+    piece P2 = { 2 , p} ;
+    piece P3 = { 2 , p} ;
+    piece P4 = { 2 , p} ;
+    piece P5 = { 2 , p} ;
+    piece P6 = { 2 , p} ;
+    piece P7 = { 2 , p} ;
+    piece P8 = { 2 , p} ;
+    piece C1 = { 2 , c };
+    piece C2 = { 2 , c };
+    piece B1 = { 2 , b };
+    piece B2 = { 2 , b };
+    piece T1 = { 2 , t };
+    piece T2 = { 2 , t };
+    piece QUEEN = { 2 , q };
+    piece KING = { 2 , k };
+
     board = [
-        [ ],
-        [ ],
-        [ ],
-        [ ],
-        [ ],
-        [ ],
-        [ ],
-        [ ]
+        [ , , , , , , , ],
+        [ , , , , , , , ],
+        [ , , , , , , , ],
+        [ , , , , , , , ],
+        [ , , , , , , , ],
+        [ , , , , , , , ],
+        [ , , , , , , , ],
+        [ , , , , , , , ]
     ]
 }
 
