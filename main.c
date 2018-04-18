@@ -1,172 +1,102 @@
-#include <stdio.h>
+#include "stdio.h"
+#include "string.h"
 
-//Opciones
-#define new 1
-#define scores 2
-#define exit 0
-/*
-//Jugadores
-#define white 0;
-#define black 1;
-//Fichas
-#define p 1; //Peon
-#define c 2; //Caballo
-#define b 3; //Alfil
-#define t 4; //Torre
-#define q 5; //Reina
-#define k 6; //Rey
+// Opciones
+#define new 1;
+#define scores 2;
+#define exit 0;
+// Jugadores
+#define white 1;
+#define black 2;
+// Fichas
+#define peon 1; // Peon
+#define cab 2; // Caballo
+#define bis 3; // Alfil
+#define tow 4; // Torre
+#define queen 5; // Reina
+#define king 6; // Rey
 
-//Variable global para el tablero
-board[8][8];
+// Variable global para el tablero
+piece board[8][8];
+typedef struct {
+	int turn;
+	int type;
+	char graph;
+}piece;
 
-typedef struct{
-    int turn;
-    int type;
-    switch(type){
-        case(p):
-        if(turn == white){
-            char graph = 'p'
-        } else {
-            char graph = 'P'
-        }
-            break;
-       case(C):
-        if(turn == white){
-            char graph = 'c'
-        } else {
-            char graph = 'C'
-        }
-            break;
-        case(b):
-        if(turn == white){
-            char graph = 'b'
-        } else {
-            char graph = 'B'
-        }
-            break;
-        case(t):
-        if(turn == white){
-            char graph = 't'
-        } else {
-            char graph = 'T'
-        }
-            break;
-        case(q):
-        if(turn == white){
-            char graph = 'q'
-        } else {
-            char graph = 'Q'
-        }
-            break;
-        case(k):
-        if(turn == white){
-            char graph = 'k'
-        } else {
-            char graph = 'K'
-        }
-            break;
-    }
-} piece;
-
-void display_board(board){
-    printf("   a   b   c   d   e   f   g   h \n");
-    for (i = 0; i < 8; i++){
-        printf("%d -", i);
-        for(j = 0; j < 8; j++){
-            if (board[i][j] != 0){
-                printf(" %c ", board[i][j].graph);
-            } else {
-                printf(" - ");
-            }
-        }
-        printf("\n");
-    }
+void init_game() {
+	//int checkmate = 0;
+	//int turn = 0;
+	//generate_board();
+	//while (checkmate == 0) {
+	//	char move[5];
+	//movement:
+	//	scanf("move: %c", &move);
+	//	if (validate_move() == 1) {
+	//		move();
+	//		check_checkmate();
+	//		display_board();
+	//		finish_turn();
+	//	} else {
+	//		printf("Invalid move");
+	//		goto movement;
+	//	}
+	//}
 }
 
-void generate_board(){
-    piece p1 = { 1 , p };
-    piece p2 = { 1 , p };
-    piece p3 = { 1 , p };
-    piece p4 = { 1 , p };
-    piece p5 = { 1 , p };
-    piece p6 = { 1 , p };
-    piece p7 = { 1 , p };
-    piece p8 = { 1 , p };
-    piece c1 = { 1 , c };
-    piece c2 = { 1 , c };
-    piece b1 = { 1 , b };
-    piece b2 = { 1 , b };
-    piece t1 = { 1 , t };
-    piece t2 = { 1 , t };
-    piece queen = { 1 , q };
-    piece king = { 1 , k };
-    piece P1 = { 2 , p} ;
-    piece P2 = { 2 , p} ;
-    piece P3 = { 2 , p} ;
-    piece P4 = { 2 , p} ;
-    piece P5 = { 2 , p} ;
-    piece P6 = { 2 , p} ;
-    piece P7 = { 2 , p} ;
-    piece P8 = { 2 , p} ;
-    piece C1 = { 2 , c };
-    piece C2 = { 2 , c };
-    piece B1 = { 2 , b };
-    piece B2 = { 2 , b };
-    piece T1 = { 2 , t };
-    piece T2 = { 2 , t };
-    piece QUEEN = { 2 , q };
-    piece KING = { 2 , k };
+void display_board(board) {
 
-    board = [
-        [ t1, c1 , b1 , king , queen , b2 , c2 , t2 ],
-        [ p1, p2 , p3 , p4 , p5 , p6 , p7 , p8 ],
-        [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
-        [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
-        [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
-        [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ],
-        [ P1, P2 , P3 , P4 , P5 , P6 , P7 , P8 ],
-        [ T1, C1 , B1 , KING , QUEEN , B2 , C2 , T2 ],
-    ]
 }
-*/
 
-void init_game(){
-    //generate_board();
-    /*while(checkmate == 0){
-        char move[5];
-        movement:
-        scanf("move: %c", &move);
-        if( validate_move() == 1){
-            move();
-            check_checkmate();
-            display_board();
-            finish_turn();
-        } else {
-            printf("Invalid move");
-            goto movement;
-        }
-    }
-    */
+
+
+void generate_board() {
+	piece b_p1 = {1, peon, 'p'};
+	//piece b_p2 = {1, peon, 'p'};
+	//piece b_p3 = {1, peon, 'p'};
+	//piece b_p4 = {1, peon, 'p'};
+	//piece b_p5 = {1, peon, 'p'};
+	//piece b_p6 = {1, peon, 'p'};
+	//piece b_p7 = {1, peon, 'p'};
+	//piece b_p8 = {1, peon, 'p'};
+	//piece b_c1 = {1, cab, 'c'};
+	//piece b_c2 = {1, cab, 'c'};
+	//piece b_b1 = {1, bis, 'b'};
+	//piece b_b2 = {1, bis, 'b'};
+	//piece b_t1 = {1, tow, 't'};
+	//piece b_t2 = {1, tow, 't'};
+	//piece b_queen = {1, queen, 'q'};
+	//piece b_king = {1, king, 'k'};
+	//piece w_P1 = {2, peon, 'P'};
+	//piece w_P2 = {2, peon, 'P'};
+	//piece w_P3 = {2, peon, 'P'};
+	//piece w_P4 = {2, peon, 'P'};
+	//piece w_P5 = {2, peon, 'P'};
+	//piece w_P6 = {2, peon, 'P'};
+	//piece w_P7 = {2, peon, 'P'};
+	//piece w_P8 = {2, peon, 'P'};
+	//piece w_C1 = {2, cab, 'C'};
+	//piece w_C2 = {2, cab, 'C'};
+	//piece w_B1 = {2, bis, 'B'};
+	//piece w_B2 = {2, bis, 'B'};
+	//piece w_T1 = {2, tow, 'T'};
+	//piece w_T2 = {2, tow, 'T'};
+	//piece w_QUEEN = {2, queen, 'Q'};
+	//piece w_KING = {2, king, 'K'};
 }
 
 int main(void) {
-    int init;
-    printf("Opciones: \n\t1 - Inicar Nuevo Juego\n\t2 - Mostrar scores\n\t0 - Salir\n");
-    checkInit:
-    scanf("%d", &init);
-    switch(init){
-        case 1:
-            init_game();
-            break;
-        case 2:
-            //show_scores();
-            break;
-        case 0:
-            //exit();
-            break;
-        default:
-            printf("Invalid input, try again: ");
-            goto checkInit;
-    }
-    return 0;
+	//char init;
+    //checkInit:
+	//scanf("/s", &init);
+	//switch (init) {
+	//case new:
+	//	init_game();
+	//	break;
+	//case scores:
+	//	show_scores();
+	//	break;
+	//case exit:
+	//}
+	//return 0;
 }
