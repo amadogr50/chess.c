@@ -146,9 +146,6 @@ void display_board(piece board[8][8]) {
 		printf("%d ", x+1);
 		for (int y = 1; y < 9; y++) {
 			printf("|%c", board[x][y].graph);
-			{
-				// printf("|");
-			}
 		}
 		printf("|\n");
 	}
