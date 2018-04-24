@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "init.h"
+#include "instructions.h"
+#include "scores.h"
 // Opciones
 #define new 1
 #define scores 2
@@ -14,19 +17,22 @@ int main(void) {
 	scanf("%d", &init);
 	switch (init) {
 	case new:
+		system("cls");
 		printf("New game\n");
-		//system("cls");
 		init_game();
 		break;
 	case scores:
+		system("cls");
 		printf("Scores");
 		//show_scores();
 		break;
-case instructions:
+	case instructions:
+		system("cls");
 		printf("Instructions");	
 		//show_instructions
 		break;
 	case exit:
+		system("cls");
 		printf("Thanks for playing");
 		break;
 	}
