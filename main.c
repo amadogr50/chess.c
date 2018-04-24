@@ -4,6 +4,7 @@
 #include "init.h"
 #include "instructions.h"
 #include "scores.h"
+
 // Opciones
 #define new 1
 #define scores 2
