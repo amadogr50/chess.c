@@ -14,7 +14,7 @@
 int main(void) {
 	int init;
     checkInit:
-	printf("WELCOME TO CHESS PE2018v0.01\n\nType one of the following:\n\t1: To start a new game\n\t2: To show scores\nt3: To show instructions\n\t0: To exit game\n\n");
+	printf("WELCOME TO CHESS PE2018v0.01\n\nType one of the following:\n\t1: To start a new game\n\t2: To show scores\n\t3: To show instructions\n\t0: To exit game\n\n");
 	scanf("%d", &init);
 	switch (init) {
 	case new:
