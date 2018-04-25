@@ -1,0 +1,100 @@
+Instrucciones:
+Las fichas están representadas como mayúsculas para blancas y minúsculas para negras.
+
+Elige una modalidad, para iniciar un juego nuevo, presiona 1 en la pantalla de inicio.
+Para mover una ficha ingresa la coordenada inicial seguido de la coordenada a la que deseas moverte. 
+Ejemplo: 
+  A B C D E F G H
+1 T C B K Q B C T
+2 P P P P P P P P 
+3 - - - - - - - -
+4 - - - - - - - - 
+5 - - - - - - - -
+6 - - - - - - - - 
+7 p p p p p p p p
+8 t c b k q b c t
+
+Mueven blancas: d2d4
+
+  A B C D E F G H
+1 T C B K Q B C T
+2 P P P - P P P P 
+3 - - - - - - - -
+4 - - - P - - - - 
+5 - - - - - - - -
+6 - - - - - - - - 
+7 p p p p p p p p
+8 t c b k q b c t
+
+Movimientos validos por ficha
+Peon (P): Solo se puede mover hacia enfrente un espacio, y dos en su primer turno.
+      Solo se puede mover un espacio en diagonal hacia enfrente solo si es para comer otra ficha.
+      /////////////////////////////////////////////////////////////////
+      T C B K Q B C T
+      P P P - P P P P 
+      - - - P - - - -
+      - - x x x - - - 
+      - - - x - - - -
+      - - - - - - - - 
+      p p p p p p p p
+      t c b k q b c t
+
+Torre (T): Solo se puede mover en linea recta, horizontal y verticalmente.
+
+      /////////////////////////////////////////////////////////////////
+      T C B K Q B C T
+      P P P P P P P P 
+      - - - x - - - -
+      x x x T x x x x 
+      - - - x - - - -
+      - - - x - - - - 
+      p p p p p p p p
+      t c b k q b c t
+
+Caballo (C): El caballo se mueve en forma de L, contando 2 espacios vertical u         horizontalmente y uno a la derecha o izquierda.
+
+      /////////////////////////////////////////////////////////////////
+      T C B K Q B C T
+      P P x * x P P P 
+      - x - * - x - -
+      - * * C * * - - 
+      - x - * - x - -
+      - - x * x - - - 
+      p p p p p p p p
+      t c b k q b c t
+
+Alfil (B): El alfil se mueve de forma diagonal.
+
+      /////////////////////////////////////////////////////////////////
+      T C B K Q B C T
+      P P P P P P P P 
+      - - x - x - - -
+      - - - A - - - - 
+      - - x - x - - -
+      - x - - - x - - 
+      p p p p p p p p
+      t c b k q b c t
+      
+Reina (Q): La reina se puede mover de manera horizontal vertical y diagonal.
+
+      /////////////////////////////////////////////////////////////////
+      T C B K Q B C T
+      P P P P P P P P 
+      - - x x x - - -
+      x x x Q x x x x 
+      - - x x x - - -
+      - x - x - x - - 
+      p p p p p p p p
+      t c b k q b c t
+
+Rey (K): El rey se puede mover en cualquier dirección pero solo una casilla.
+
+      /////////////////////////////////////////////////////////////////
+      T C B K Q B C T
+      P P P P P P P P 
+      - - x x x - - -
+      - - x K x - - - 
+      - - x x x - - -
+      - - - - - - - - 
+      p p p p p p p p
+      t c b k q b c t
