@@ -1,4 +1,5 @@
 /* 
+    Library for managing the score´s file.
     Score Structure:
     <# game number > - <player1 nick> "vs" <player2 nick> - <winner>
 */

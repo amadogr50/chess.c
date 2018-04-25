@@ -1,3 +1,7 @@
+/*
+    Library for managing all releated to the movement of pieces in the board.
+*/
+
 typedef struct {
     int x;   
     int y;
@@ -8,7 +12,7 @@ int changeAsciiToDecimal(int x){
     if (x >= 64 & x <= 72 ) { 
         return x - 64 - 1;
     } else{
-        return x - 49 - 1;
+        return x - 48 - 1;
     }
 }
 
@@ -51,27 +55,23 @@ int validateMove(coordinate moveFrom, coordinate moveTo, int type, piece board[8
 
 int toMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     piece vacio = {0, blank, ' '};
-    //Determine if the is valid, if it is,
-    printf("Getting inside toMove\n");
     piece pieceToMove = board[moveFrom.x][moveFrom.y];
     if( validateMove(moveFrom, moveTo, pieceToMove.type, board)  == 1 ) {
-        printf("Is valid\n");
+         //If it is a valid move continues with following
         if( isInside(moveTo, board) == 1 ){
-            printf("Is inside\n");
+            printf("Movimiento valido\n");
             //If it is inside, return 1 and make de position change
-            board[moveTo.x][moveTo.y] = board[moveFrom.x][moveFrom.y];
-            printf("%c", board[moveTo.x][moveTo.y]);
-            printf("%c", board[moveFrom.x][moveFrom.y]);
-            board[moveFrom.x][moveFrom.y] = vacio;
+            board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
+            board[moveFrom.y][moveFrom.x] = vacio;
             return 1;
         } else {
-            printf("Is not inside\n");
             //If it is not inside, return 0
+            printf("Movimiento invalido\n");
             return 0;
         }
     } else {
-        printf("Is not valid\n");
         //If it is not a valid move, return 0
+        printf("Movimiento invalido");
         return 0;
     }
 }
