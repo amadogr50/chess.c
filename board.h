@@ -137,11 +137,7 @@ void generate_board(piece board[8][8]) {
 }
 
 void display_board(piece board[8][8]) {
-	printf("  ");
-	for(int i = 65; i < 73; i++){
-		printf(" %c", i);
-	}
-	printf(" \n");
+	printf("   A B C D E F G H\n");
 	for (int x = 0; x < 8; x++) {
 		printf("%d ", x+1);
 		for (int y = 0; y < 8; y++) {
