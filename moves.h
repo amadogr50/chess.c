@@ -53,27 +53,32 @@ int validateMove(coordinate moveFrom, coordinate moveTo, int type, piece board[8
     }
 }
 
-int toMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
+int toMove(int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     piece vacio = {0, blank, ' '};
-    piece pieceToMove = board[moveFrom.x][moveFrom.y];
-    if( validateMove(moveFrom, moveTo, pieceToMove.type, board)  == 1 ) {
-         //If it is a valid move continues with following
-        if( isInside(moveTo, board) == 1 ){
-            printf("Movimiento valido\n");
-            //If it is inside, return 1 and make de position change
-            board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
-            board[moveFrom.y][moveFrom.x] = vacio;
-            return 1;
+    if (board[moveFrom.y][moveFrom.x].turn == turnPlayer){
+        if( validateMove(moveFrom, moveTo, board[moveFrom.x][moveFrom.y].type, board)  == 1 ) {
+            //If it is a valid move continues with following
+            if( isInside(moveTo, board) == 1 ){
+                //If it is inside, return 1 and make de position change
+                board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
+                board[moveFrom.y][moveFrom.x] = vacio;
+                return 1;
+            } else {
+                //If it is not inside, return 0
+                printf("Movimiento fuera del tablero\n");
+                return 0;
+            }
         } else {
-            //If it is not inside, return 0
+            //If it is not a valid move, return 0
             printf("Movimiento invalido\n");
             return 0;
         }
     } else {
-        //If it is not a valid move, return 0
-        printf("Movimiento invalido");
+        //If the player is not owner of the piece, return 0
+        printf("Esa pieza no es tuya\n");
         return 0;
     }
+        
 }
 
 int validateCheckmate(piece board[8][8]){
