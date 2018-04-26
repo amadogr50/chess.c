@@ -29,12 +29,12 @@ int main(void) {
 		break;
 	case scores:
 		terminalClear();
-		printf("Scores");
+		printf("Scores\n");
 		//show_scores();
 		break;
 	case instructions:
 		terminalClear();
-		printf("Instructions");	
+		printf("Instructions\n");	
 		//show_instructions
 		break;
 	case exit:
