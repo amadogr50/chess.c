@@ -7,6 +7,8 @@
 #include "instructions.h"
 #include "scores.h"
 #include "predirectives.h"
+#include "server.h"
+#include "client.h"
 
 // Opciones
 #define new 1
