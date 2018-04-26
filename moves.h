@@ -11,8 +11,10 @@ int changeAsciiToDecimal(int x){
     //It substract one more cause it is needed to get the true direccions in the array
     if (x >= 64 & x <= 72 ) { 
         return x - 64 - 1;
-    } else{
+    } else if (x >= 48 & x <= 56) {
         return x - 48 - 1;
+    } else if (x >= 97 & x <= 104) {
+        return x - 97 - 1;
     }
 }
 
@@ -64,9 +66,16 @@ int toMove(int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8
             //If it is a valid move continues with following
             if( isInside(moveTo, board) == 1 ){
                 //If it is inside, return 1 and make de position change
-                board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
-                board[moveFrom.y][moveFrom.x] = vacio;
-                return 1;
+                if (board[moveTo.y][moveTo.x].turn != board[moveFrom.y][moveFrom.x].turn) {
+                    //If the turn´s pieces are different, then they are not owned by the same player
+                    board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
+                    board[moveFrom.y][moveFrom.x] = vacio;
+                    return 1;
+                } else {
+                    //If turn´s pieces are equal, then they are owned by the same player
+                    printf("No puedes comerte tus piezas\n");
+                    return 0;
+                }
             } else {
                 //If it is not inside, return 0
                 printf("Movimiento fuera del tablero\n");
