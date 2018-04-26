@@ -18,7 +18,11 @@ int changeAsciiToDecimal(int x){
 
 int isInside(coordinate moveTo, piece board[8][8]){
     //Determines if the movement is inside the board
-    return 1;
+    if (moveTo.y > 7 | moveTo.x > 8){
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 int validateMove(coordinate moveFrom, coordinate moveTo, int type, piece board[8][8]){
