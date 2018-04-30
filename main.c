@@ -35,7 +35,7 @@ int main(void) {
 	case instructions:
 		terminalClear();
 		printf("Instructions\n");	
-		//show_instructions
+		show_instructions();
 		break;
 	case exit:
 		terminalClear();
