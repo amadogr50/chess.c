@@ -133,7 +133,19 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
             break;
         case 3:   //Horse validation
             printf("Is horse\n");
-            return 1;
+            if (abs( moveFrom.y - moveTo.y ) == 2) {
+                if (abs( moveFrom.x - moveTo.x ) == 1) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            } else if ( abs( moveFrom.y - moveTo.y ) == 1 ) {
+                if (abs( moveFrom.x - moveTo.x ) == 2) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
             break;
         case 4:   //Alfil validation
             printf("Is bis\n");
