@@ -6,9 +6,6 @@
 #include "init.h"
 #include "instructions.h"
 #include "scores.h"
-#include "predirectives.h"
-#include "server.h"
-#include "client.h"
 
 // Opciones
 #define new 1
@@ -23,24 +20,23 @@ int main(void) {
 	scanf("%d", &init);
 	switch (init) {
 	case new:
-		terminalClear();
+		system("cls");
 		printf("New game\n");
 		init_game();
 		break;
 	case scores:
-		terminalClear();
+		system("cls");
 		printf("Scores\n");
 		//show_scores();
 		break;
 	case instructions:
-		terminalClear();
+		system("cls");
 		printf("Instructions\n");	
 		//show_instructions
 		break;
 	case exit:
-		terminalClear();
+		system("cls");
 		printf("Thanks for playing\n");
-		terminalWait();
 		break;
 	}
 	return 0;
