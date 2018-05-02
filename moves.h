@@ -27,33 +27,154 @@ int isInside(coordinate moveTo, piece board[8][8]){
     }
 }
 
-int validateMove(coordinate moveFrom, coordinate moveTo, int type, piece board[8][8]){
+int isEmpty (int direction, coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
+    //Function to determine if the direction of the piece´s movement is empty
+    switch (direction) {
+        case 1: //Right
+            for (int i = moveFrom.x; i < moveTo.x; i++) {
+                if ( board[moveTo.y][i] != 7) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 2: //Left
+            for (int i = moveFrom.x; i > moveTo.x; i--) {
+                if ( board[moveTo.y][i] != 7) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 3: //Up
+            for (int i = moveFrom.y; i < moveTo.y; i++) {
+                if ( board[i][moveFrom.x] != 7) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 4: //Down
+            for (int i = moveFrom.y; i > moveTo.y; i--) {
+                if ( board[i][moveFrom.x] != 7) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 5: //Diagonal Right Up
+            for (int i = moveFrom.x, j = moveFrom.y; i < moveTo.x && j < moveTo.y; i++, j++ ) {
+                if ( board[j][i] != 7 ) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 6: //Diagonal Left Up
+            for (int i = moveFrom.x, j = moveFrom.y; i > moveTo.x && j < moveTo.y; i--, j++ ) {
+                if ( board[j][i] != 7 ) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 7: //Diagonal Right Down
+            for (int i = moveFrom.x, j = moveFrom.y; i < moveTo.x && j > moveTo.y; i++, j-- ) {
+                if ( board[j][i] != 7 ) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+        case 8: //Diagonal Left Down
+            for (int i = moveFrom.x, j = moveFrom.y; i > moveTo.x && j > moveTo.y; i--, j-- ) {
+                if ( board[j][i] != 7 ) {
+                    return 0;
+                }
+            }
+            return 1;
+            break;
+    }
+}
+
+int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     //Takes type of piece and depending of it, aplies the corresping moving rules
     //return 1 = Valid move. return 0 = Not valid move
-    return 1;
-    switch(type){
-        case peon:  //Peon validation
-            printf("Is pown");
+    printf("%d %d\n", moveFrom.x, moveFrom.y);
+    printf("%d\n", board[moveFrom.y][moveFrom.x].type);
+    switch(board[moveFrom.y][moveFrom.x].type){
+        case 1:   //Peon validation
+            printf("Is pown\n");
+            //Determine which player is the owner
+            if (board[moveFrom.y][moveFrom.x].turn == 1) {
+                if (moveFrom.y == 1) {
+                    if (moveTo.x == moveFrom.x) {
+                        if (moveTo.y > 1 && moveTo.y <=3) {
+                            if (isEmpty(moveFrom, moveTo, board) == 1) {
+
+                            } else {
+
+                            }
+                        }
+                    } else {
+                        
+                    }
+                } else {
+                    
+                }
+                return 1;
+            } else {
+                if (moveFrom.y == 6) {
+
+                    } else {
+
+                    }
+            }
+            break;
+        case 3:   //Horse validation
+            printf("Is horse\n");
             return 1;
             break;
-        case cab:   //Horse validation
-            printf("Is horse");
+        case 4:   //Alfil validation
+            printf("Is bis\n");
+            if (abs(moveTo.x - moveFrom.x) == abs(moveTo.y - moveFrom.y)) {
+                return 1;
+            } else {
+                return 0;
+            }
+            break;
+        case 5:   //Tower validation
+            printf("Is tower\n");
+            if (moveTo.x != moveFrom.x){
+                if (moveTo.y != moveFrom.y) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            } else {
+                if (moveTo.y != moveFrom.y) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
             return 1;
             break;
-        case bis:   //Alfil validation
-            printf("Is bis");
+        case 6:   //Queen validation
+            printf("Is queen\n");
             return 1;
             break;
-        case tow:   //Tower validation
-            printf("Is tower");
-            return 1;
-            break;
-        case queen: //Queen validation
-            printf("Is queen");
-            return 1;
-            break;
-        case king:  //King validation
-            printf("Is king");
+        case 7:   //King validation
+            printf("Is king\n");
+            if (moveTo.x > moveFrom.x - 1 && moveTo.x < moveFrom.x + 1) {
+                if (moveTo.y > moveFrom.y - 1 && moveTo.y < moveFrom.y + 1) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
             return 1;
             break;
     }
@@ -62,7 +183,7 @@ int validateMove(coordinate moveFrom, coordinate moveTo, int type, piece board[8
 int toMove(int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     piece vacio = {0, blank, ' '};
     if (board[moveFrom.y][moveFrom.x].turn == turnPlayer){
-        if( validateMove(moveFrom, moveTo, board[moveFrom.x][moveFrom.y].type, board)  == 1 ) {
+        if( validateMove(moveFrom, moveTo, board)  == 1 ) {
             //If it is a valid move continues with following
             if( isInside(moveTo, board) == 1 ){
                 //If it is inside, return 1 and make de position change
