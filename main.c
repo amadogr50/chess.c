@@ -32,7 +32,7 @@ int main(void) {
 	case instructions:
 		system("cls");
 		printf("Instructions\n");	
-		//show_instructions
+		show_instructions();
 		break;
 	case exit:
 		system("cls");
