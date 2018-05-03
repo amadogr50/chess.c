@@ -130,6 +130,11 @@ int pawnPromotion () {
     return promotion;
 }
 
+int validateCheckmate(piece board[8][8]){
+    //Determinates if there´s a checkmate
+    return 0;
+}
+
 int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     //Takes type of piece and depending of it, aplies the corresping moving rules
     //return 1 = Valid move. return 0 = Not valid move
@@ -142,8 +147,43 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
             if (board[moveFrom.y][moveFrom.x].turn == 1) {
                 if (moveFrom.y == 1) {
                     //Code for the first move
-
-
+                    if (abs(moveFrom.y - moveTo.y) == 2) {
+                        //The move is valid if the Δy is 2
+                         if (board[moveTo.y][moveTo.x].type == 7) {
+                                //It´s a valid move if there´s nothing in the space to move
+                                return 1;
+                            } else {
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
+                            }
+                    } else if (abs(moveTo.y - moveFrom.y) == 1) {
+                        //The move is valid if the Δy is 1
+                        if (moveFrom.x == moveTo.x) {
+                            //It´s valid if there´s not movement in x
+                            if (board[moveTo.y][moveTo.x].type == 7) {
+                                //It´s a valid move if there´s nothing in the space to move
+                                return 1;
+                            } else {
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
+                            }
+                        } else if (abs(moveFrom.x - moveTo.x) == 1) {
+                            //It´s valid if Δx is 1
+                            if (board[moveTo.y][moveTo.x].type != 7) {
+                                //It´s a valid move if there´s something in the space to move
+                                return 1;
+                            } else {
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
+                            }
+                        } else {
+                            //It´s not a valid move if the Δx is outside [1,1]
+                            return 0;
+                        }
+                    } else {
+                        //The move is not valid if the Δy is different to 1
+                        return 0;
+                    }
                 } else {
                     //Code for any other move
                     if (abs(moveTo.y - moveFrom.y) == 1) {
@@ -334,7 +374,3 @@ int toMove(int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8
         
 }
 
-int validateCheckmate(piece board[8][8]){
-    //Determinates if there´s a checkmate
-    return 0;
-}
