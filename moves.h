@@ -27,8 +27,34 @@ int isInside(coordinate moveTo, piece board[8][8]){
     }
 }
 
-int isEmpty (int direction, coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
+int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
     //Function to determine if the direction of the piece´s movement is empty
+    int right, left, up, down, direction;
+
+    if (right){
+        if (up) {
+            direction = 5;
+        } else if (down) {
+            direction = 7;
+        } else {
+            direction = 1;
+        }
+    } else if (left) {
+        if (up) {
+            direction = 6;
+        } else if (down) {
+            direction = 8;
+        } else {
+            direction = 2;
+        }
+    } else {
+        if (up) {
+            direction = 3;
+        } else if (down) {
+            direction = 4;
+        }
+    }
+
     switch (direction) {
         case 1: //Right
             for (int i = moveFrom.x; i < moveTo.x; i++) {
@@ -97,6 +123,13 @@ int isEmpty (int direction, coordinate moveFrom, coordinate moveTo, piece board[
     }
 }
 
+int pawnPromotion () {
+    int promotion;
+    printf("Escoge tu promocion:\n1: Peon\n2: Caballo\n3: Alfil\n4: Torre\n5: Reina\n");
+    scanf("%d", &promotion);
+    return promotion;
+}
+
 int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     //Takes type of piece and depending of it, aplies the corresping moving rules
     //return 1 = Valid move. return 0 = Not valid move
@@ -108,31 +141,94 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
             //Determine which player is the owner
             if (board[moveFrom.y][moveFrom.x].turn == 1) {
                 if (moveFrom.y == 1) {
-                    if (moveTo.x == moveFrom.x) {
-                        if (moveTo.y > 1 && moveTo.y <=3) {
-                            if (isEmpty(moveFrom, moveTo, board) == 1) {
+                    //Code for the first move
 
+
+                } else {
+                    //Code for any other move
+                    if (abs(moveTo.y - moveFrom.y) == 1) {
+                        //The move is valid if the Δy is 1
+                        if (moveFrom.x == moveTo.x) {
+                            //It´s valid if there´s not movement in x
+                            if (board[moveTo.y][moveTo.x].type == 7) {
+                                //It´s a valid move if there´s nothing in the space to move
+                                if (moveTo.y == 7) {
+                                    //Code for a pawn promotion
+                                    pawnPromotion()
+                                }
+                                return 1;
                             } else {
-
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
                             }
+                        } else if (abs(moveFrom.x - moveTo.x) == 1) {
+                            //It´s valid if Δx is 1
+                            if (board[moveTo.y][moveTo.x].type != 7) {
+                                //It´s a valid move if there´s something in the space to move
+                                if (moveTo.y == 7) {
+                                    //Code for a pawn promotion
+                                    pawnPromotion()
+                                }
+                                return 1;
+                            } else {
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
+                            }
+                        } else {
+                            //It´s not a valid move if the Δx is outside [1,1]
+                            return 0;
                         }
                     } else {
-                        
+                        //The move is not valid if the Δy is different to 1
+                        return 0;
                     }
-                } else {
-                    
                 }
-                return 1;
             } else {
                 if (moveFrom.y == 6) {
+                    //Code for the first move
 
+                } else {
+                    //Code for any other move
+                    if (abs(moveTo.y - moveFrom.y) == 1) {
+                        //The move is valid if the Δy is 1
+                        if (moveFrom.x == moveTo.x) {
+                            //It´s valid if there´s not movement in x
+                            if (board[moveTo.y][moveTo.x].type == 7) {
+                                //It´s a valid move if there´s nothing in the space to move
+                                if (moveTo.y == 0) {
+                                    //Code for a pawn promotion
+                                    pawnPromotion()
+                                }
+                                return 1;
+                            } else {
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
+                            }
+                        } else if (abs(moveFrom.x - moveTo.x) == 1) {
+                            //It´s valid if Δx is 1
+                            if (board[moveTo.y][moveTo.x].type != 7) {
+                                //It´s a valid move if there´s something in the space to move
+                                if (moveTo.y == 0) {
+                                    //Code for a pawn promotion
+                                    pawnPromotion()
+                                }
+                                return 1;
+                            } else {
+                                //It´s not a valid move if there´s something in the space to move
+                                return 0;
+                            }
+                        } else {
+                            //It´s not a valid move if the Δx is outside [1,1]
+                            return 0;
+                        }
                     } else {
-
+                        //The move is not valid if the Δy is different to 1
+                        return 0;
                     }
+                }
             }
             break;
-        case 3:   //Horse validation
-            printf("Is horse\n");
+        case 2:   //Horse validation
             if (abs( moveFrom.y - moveTo.y ) == 2) {
                 if (abs( moveFrom.x - moveTo.x ) == 1) {
                     return 1;
@@ -147,16 +243,14 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
                 }
             }
             break;
-        case 4:   //Alfil validation
-            printf("Is bis\n");
+        case 3:   //Alfil validation
             if (abs(moveTo.x - moveFrom.x) == abs(moveTo.y - moveFrom.y)) {
                 return 1;
             } else {
                 return 0;
             }
             break;
-        case 5:   //Tower validation
-            printf("Is tower\n");
+        case 4:   //Tower validation
             if (moveTo.x != moveFrom.x){
                 if (moveTo.y != moveFrom.y) {
                     return 0;
@@ -170,14 +264,27 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
                     return 0;
                 }
             }
-            return 1;
             break;
-        case 6:   //Queen validation
-            printf("Is queen\n");
-            return 1;
+        case 5:   //Queen validation
+            if (abs(moveTo.x - moveFrom.x) == abs(moveTo.y - moveFrom.y)) {
+                return 1;
+            } else {
+                if (moveTo.x != moveFrom.x){
+                    if (moveTo.y != moveFrom.y) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
+                } else {
+                    if (moveTo.y != moveFrom.y) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            }
             break;
-        case 7:   //King validation
-            printf("Is king\n");
+        case 6:   //King validation
             if (moveTo.x > moveFrom.x - 1 && moveTo.x < moveFrom.x + 1) {
                 if (moveTo.y > moveFrom.y - 1 && moveTo.y < moveFrom.y + 1) {
                     return 1;
