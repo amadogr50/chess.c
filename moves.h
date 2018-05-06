@@ -456,6 +456,7 @@ int toMove( int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[
                         //If the turn´s pieces are different, then they are not owned by the same player
                         board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
                         board[moveTo.y][moveTo.x].type = pawnPromotion();
+                        board[moveTo.y][moveTo.x].graph = pieceGraph (board[moveTo.y][moveTo.x].type, turnPlayer);
                         board[moveFrom.y][moveFrom.x] = vacio;
                         return 1;
                     } else {
