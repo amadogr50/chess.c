@@ -3,7 +3,6 @@
 */
 
 #include "defs.h"
-#include "checkMateValiation.h"
 
 int changeAsciiToDecimal(int x){
     //It substract one more cause it is needed to get the true direccions in the array
