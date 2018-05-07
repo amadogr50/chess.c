@@ -6,6 +6,7 @@
 #include <string.h>
 #include "board.h"
 #include "moves.h"
+#include "cmv.h"
 
 void readMoves(int turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], int *validMove, piece board[8][8]){
 	//Function to determinate
