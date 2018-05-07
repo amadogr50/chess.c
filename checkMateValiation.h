@@ -1,5 +1,4 @@
-#include "board.h"
-#include "variables-definitions.h"
+#include "defs.h"
 
 /*
     CheckMate Validation Explication:
@@ -16,9 +15,9 @@
 void calculateMoves (piece board[8][8], coordinate pieceCoor, Moves moves) {
     short turn = board[pieceCoor.y][pieceCoor.x].turn;
     switch (board[pieceCoor.y][pieceCoor.x].type) {
-        case peon: //Pawn
+        case PAWN: //Pawn
             //Determine which player is the owner
-            if (turn == white) {
+            if (turn == WHITE) {
                 if (pieceCoor.y == 1) {
                     //Code for the first move
                     //Up
@@ -36,19 +35,19 @@ void calculateMoves (piece board[8][8], coordinate pieceCoor, Moves moves) {
                         }
                     }
                     //Down-Left
-                    if (pieceCoor.y < 8 ) {
+                    if (pieceCoor.x < 8 ) {
                         //Determines if the piece is not in the left border
                         if (board[pieceCoor.y + 1][pieceCoor.x + 1].turn != turn) {
                             //It only occurs if there´s an enemy piece in the position
-                            moves.position[i][pieceCoor.x].peon == 1;
+                            moves.position[pieceCoor.y + 1][pieceCoor.x + 1].peon == 1;
                         }
                     }
                     //Down-Right
-                    if (pieceCoor.y > 0) {
+                    if (pieceCoor.x > 0) {
                         //Determines if the piece is not in the right border
                         if (board[pieceCoor.y - 1][pieceCoor.x - 1].turn != turn) {
                             //It only occurs if there´s an enemy piece in the position
-                            moves.position[i][pieceCoor.x].peon == 1;
+                            moves.position[pieceCoor.y - 1][pieceCoor.x - 1].peon == 1;
                         }
                     }
                 } else {
@@ -59,7 +58,7 @@ void calculateMoves (piece board[8][8], coordinate pieceCoor, Moves moves) {
                         moves.position[pieceCoor.y + 1][pieceCoor.x].peon == 1;
                     }
                     //Down-Left
-                    if (pieceCoor.y < 8 ) {
+                    if (pieceCoor.x < 8 ) {
                         //Determines if the piece is not in the left border
                         if (board[pieceCoor.y + 1][pieceCoor.x + 1].turn != turn) {
                             //It only occurs if there´s an enemy piece in the position
@@ -67,7 +66,7 @@ void calculateMoves (piece board[8][8], coordinate pieceCoor, Moves moves) {
                         }
                     }
                     //Down-Right
-                    if (pieceCoor.y > 0) {
+                    if (pieceCoor.x > 0) {
                         //Determines if the piece is not in the right border
                         if (board[pieceCoor.y - 1][pieceCoor.x - 1].turn != turn) {
                             //It only occurs if there´s an enemy piece in the position
@@ -80,13 +79,13 @@ void calculateMoves (piece board[8][8], coordinate pieceCoor, Moves moves) {
 
             }
             break;
-        case cab: //Horse
+        case HORSE: //Horse
             
             break;
-        case bis: //Bishop
+        case BISHOP: //Bishop
             
             break;
-        case tow: //Tower
+        case TOWER: //Tower
             //Right
             for (int i = pieceCoor.x; i < 8; i++) {
                 if ( board[pieceCoor.y][i].type == 7) {
@@ -144,11 +143,11 @@ void calculateMoves (piece board[8][8], coordinate pieceCoor, Moves moves) {
                 }
             }
             break;
-        case queen: //Queen
+        case QUEEN: //Queen
             
             break;
-        case king: //King
-            
+        case KING: //King
+
             break;
     }
 }

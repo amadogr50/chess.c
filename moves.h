@@ -413,7 +413,7 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
 }
 
 int toMove( int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8][8] ){
-    piece vacio = {0, blank, ' '};
+    piece vacio = {0, BLANK, ' '};
     if ( board[moveFrom.y][moveFrom.x].turn == turnPlayer ) {
         //Conditional for valid move response
         switch ( validateMove(moveFrom, moveTo, board) ) {
