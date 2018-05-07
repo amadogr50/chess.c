@@ -6,6 +6,7 @@
 #include <string.h>
 #include "board.h"
 #include "moves.h"
+#include "defs.h"
 
 void readMoves(int turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], int *validMove, piece board[8][8]){
 	//Function to determinate 
@@ -28,7 +29,6 @@ void init_game() {
 	//Game bucle
 	int validMove;
 	while (validateCheckmate(board) == 0) {
-		system("pause");
 		system("cls");
 		display_board(board);
 		validMove = 0;
@@ -41,7 +41,7 @@ void init_game() {
 				readMoves(turn, moveFrom, moveTo, move, &validMove, board);
 			}
 			//Change turn to 1
-			turn++;
+			turn--;
 		} else if (turn == 1) {
 			//Get the movement instructions if it is a not valid move, it repeats the code until getting a valid move
 			while(validMove == 0) {
@@ -51,7 +51,7 @@ void init_game() {
 				readMoves(turn, moveFrom, moveTo, move, &validMove, board);
 			}
 			//Change turn to 0
-			turn--;
+			turn++;
 		}
 	}
 }
