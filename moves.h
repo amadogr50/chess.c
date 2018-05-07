@@ -2,10 +2,8 @@
     Library for managing all releated to the movement of pieces in the board.
 */
 
-typedef struct {
-    int x;   
-    int y;
-} coordinate;
+#include "defs.h"
+#include "checkMateValiation.h"
 
 int changeAsciiToDecimal(int x){
     //It substract one more cause it is needed to get the true direccions in the array
@@ -151,11 +149,6 @@ int pawnPromotion () {
     printf("Escoge tu promocion:\n1: Peon\n2: Caballo\n3: Alfil\n4: Torre\n5: Reina\n");
     scanf("%d", &promotion);
     return promotion;
-}
-
-int validateCheckmate(piece board[8][8]){
-    //Determinates if there´s a checkmate
-    return 0;
 }
 
 int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
@@ -456,7 +449,7 @@ int toMove( int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[
                         //If the turn´s pieces are different, then they are not owned by the same player
                         board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
                         board[moveTo.y][moveTo.x].type = pawnPromotion();
-                        board[moveTo.y][moveTo.x].graph = pieceGraph (board[moveTo.y][moveTo.x].type, turnPlayer);
+                        board[moveTo.y][moveTo.x].graph = pieceGraph(board[moveTo.y][moveTo.x].type, turnPlayer);
                         board[moveFrom.y][moveFrom.x] = vacio;
                         return 1;
                     } else {
