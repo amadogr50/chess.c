@@ -24,15 +24,15 @@ typedef struct {
 } piece;
 
 // Jugadores
-#define blakc 1
-#define white 2
+#define BLACK 1
+#define WHITE 2
 // Fichas
-#define peon 1 	 // Peon
-#define cab 2 	 // Caballo
-#define bis 3 	 // Alfil
-#define tow 4 	 // Torre
-#define queen 5	 // Reina
-#define king 6	 // Rey
-#define blank 7  //Blank space
+#define PAWN 1 	    // Peon
+#define HORSE 2     // Caballo
+#define BISHOP 3 	// Alfil
+#define TOWER 4 	// Torre
+#define QUEEN 5	    // Reina
+#define KING 6	    // Rey
+#define BLANK 7     //Blank space
 
 #endif // DEFS_H_INCLUDED
