@@ -15,18 +15,16 @@ typedef struct{
 
 void write(FILE *archivo);
 void read(FILE *archivo);
-
 int show_scores(int access_type)
 {
   FILE *archivo;
-  int access_type;
 
   if(access_type == 2)
   {
     if ((archivo = fopen("zscores.dat", "wb")) != NULL)
-      write(archivo)
+      write(archivo);
     else
-      printf("\n File couldnt open.", );
+      printf("\n File couldnt open." );
       fclose(archivo);
   }
   if(access_type == 1)
@@ -34,7 +32,7 @@ int show_scores(int access_type)
     if((archivo = fopen("zscores.dat", "rb")) != NULL)
       read(archivo);
     else
-      printf("\nFile couldnt open", );
+      printf("\nFile couldnt open");
     fclose(archivo);
   }
   return 0;
