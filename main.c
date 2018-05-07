@@ -6,7 +6,7 @@
 #include "init.h"
 #include "instructions.h"
 #include "scores.h"
-#include "mutli.h"
+#include "multi.h"
 
 // Opciones
 #define new 1
@@ -18,13 +18,7 @@
 int main(void) {
 	int init;
     checkInit:
-	printf("WELCOME TO CHESS PE2018v0.01\n
-				\nType one of the following:\n
-				\t1: To start a new game\n
-				\t2: To start a multiplayer game\n
-				\t3: To show the scoreboard\n
-				\t4: To show the instructions\n
-				\t0: To exit the game\n");
+	printf("WELCOME TO CHESS PE2018v0.01\n\nType one of the following:\n\t1: To start a new game\n\t2: To start a multiplayer game\n\t3: To show the scoreboard\n\t4: To show the instructions\n\t0: To exit the game\n");
 	scanf("%d", &init);
 	switch (init) {
 	case new:

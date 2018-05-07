@@ -16,7 +16,7 @@ typedef struct{
 void write(FILE *archivo);
 void read(FILE *archivo);
 
-int (int access_type)
+int show_scores(int access_type)
 {
   FILE *archivo;
   int access_type;
@@ -51,14 +51,14 @@ if(answer == 1)
   {
     i++;
     playerScore1.pos = i;
-    printf("\nEnter your name: ", );
-    fgets(playerScore1[i].scorename, 30, stdin);
+    printf("\nEnter your name: ");
+    fgets(playerScore1.scorename, 30, stdin);
     playerScore1.elo = (playerScore1.elo + 1) * 1200;
     fwrite(&playerScore1, sizeof(playerScore1), 1, archivo);
   }
 }
 
-void read(FIle *archivo)
+void read(FILE *archivo)
 {
   player playerScore1;
   fread(&playerScore1, sizeof(playerScore1), 1, archivo);
