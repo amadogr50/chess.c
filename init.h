@@ -7,6 +7,7 @@
 #include "board.h"
 #include "moves.h"
 #include "defs.h"
+#include "checkMateValiation.h"
 
 void readMoves(int turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], int *validMove, piece board[8][8]){
 	//Function to determinate 
