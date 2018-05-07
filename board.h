@@ -1,26 +1,8 @@
 #include <stdio.h>
-
-// Jugadores
-#define white 1
-#define black 2
-// Fichas
-#define peon 1 	 // Peon
-#define cab 2 	 // Caballo
-#define bis 3 	 // Alfil
-#define tow 4 	 // Torre
-#define queen 5	 // Reina
-#define king 6	 // Rey
-#define blank 7  //Blank space
-
-// Variable global para el tablero
-typedef struct {
-	int turn;
-	int type;
-	char graph;
-} piece;
+#include "defs.h"
 
 void generate_board(piece board[8][8]) {
-	piece b_p1 = {1, peon, 'p'};
+	piece b_p1 = {1, queen, 'q'};
 	piece b_p2 = {1, peon, 'p'};
 	piece b_p3 = {1, peon, 'p'};
 	piece b_p4 = {1, peon, 'p'};
@@ -36,7 +18,7 @@ void generate_board(piece board[8][8]) {
 	piece b_t2 = {1, tow, 't'};
 	piece b_queen = {1, queen, 'q'};
 	piece b_king = {1, king, 'k'};
-	piece w_p1 = {2, peon, 'P'};
+	piece w_p1 = {2, queen, 'Q'};
 	piece w_p2 = {2, peon, 'P'};
 	piece w_p3 = {2, peon, 'P'};
 	piece w_p4 = {2, peon, 'P'};
