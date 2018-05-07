@@ -27,11 +27,11 @@ int main(void) {
 	case scores:
 		system("cls");
 		printf("Scores\n");
-		//show_scores();
+		show_scores(1);
 		break;
 	case instructions:
 		system("cls");
-		printf("Instructions\n");	
+		printf("Instructions\n");
 		show_instructions();
 		break;
 	case exit:
