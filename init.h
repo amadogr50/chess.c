@@ -9,27 +9,28 @@
 #include "cmv.h"
 #include "scores.h"
 
-void readMoves(int turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], int *validMove, piece board[8][8]){
+void readMoves(short turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], short *validMove, piece board[8][8], short *winner){
 	//Function to determinate
 	moveFrom.x = changeAsciiToDecimal(move[0]);
 	moveFrom.y = changeAsciiToDecimal(move[1]);
 	moveTo.x =  changeAsciiToDecimal(move[2]);
 	moveTo.y =  changeAsciiToDecimal(move[3]);
-	*validMove = toMove(turnPlayer, moveFrom, moveTo, board);
+	*validMove = toMove(turnPlayer, moveFrom, moveTo, board, &winner);
 }
 
 void init_game() {
 	//Creates the board and displays it for the first time
 	piece board[8][8];
 	generate_board(board);
-	int turn = 2;
+	short turn = 2;
+	short winner = 0;
 	//Variables for storing move info
 	char move[5];
 	coordinate moveTo;
 	coordinate moveFrom;
 	//Game bucle
-	int validMove;
-	while (validateCheckmate(board) == 0) {
+	short validMove;
+	while (winner == 0) {
 		system("cls");
 		display_board(board);
 		validMove = 0;
@@ -39,7 +40,7 @@ void init_game() {
 				//Sintax for making a move: <x1><y1><x2><y2> o <moveFrom.x><moveFrom.y><moveTo.x><moveTo.y>
 				printf("Mueven blancas:\n");
 				scanf("%s", move);
-				readMoves(turn, moveFrom, moveTo, move, &validMove, board);
+				readMoves(turn, moveFrom, moveTo, move, &validMove, board, &winner);
 			}
 			//Change turn to 1
 			turn--;
@@ -49,7 +50,7 @@ void init_game() {
 				//Sintax for making a move: <x1><y1><x2><y2> o <moveFrom.x><moveFrom.y><moveTo.x><moveTo.y>
 				printf("Mueven negras:\n");
 				scanf("%s", move);
-				readMoves(turn, moveFrom, moveTo, move, &validMove, board);
+				readMoves(turn, moveFrom, moveTo, move, &validMove, board, &winner);
 			}
 			//Change turn to 0
 			turn++;

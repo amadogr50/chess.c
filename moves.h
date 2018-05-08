@@ -412,7 +412,7 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     }
 }
 
-int toMove( int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8][8] ){
+int toMove( short turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[8][8], short **winner){
     piece vacio = {0, BLANK, ' '};
     if ( board[moveFrom.y][moveFrom.x].turn == turnPlayer ) {
         //Conditional for valid move response
@@ -427,8 +427,14 @@ int toMove( int turnPlayer, coordinate moveFrom, coordinate moveTo, piece board[
                     //If it is inside, return 1 and make de position change
                     if (board[moveTo.y][moveTo.x].turn != board[moveFrom.y][moveFrom.x].turn) {
                         //If the turn´s pieces are different, then they are not owned by the same player
-                        board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
-                        board[moveFrom.y][moveFrom.x] = vacio;
+                        if (board[moveTo.y][moveTo.x].type == 6) {
+                            board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
+                            board[moveFrom.y][moveFrom.x] = vacio;
+                            **winner =  (board[moveTo.y][moveTo.x].turn == 1) ? 2 : 1;
+                        } else {
+                            board[moveTo.y][moveTo.x] = board[moveFrom.y][moveFrom.x];
+                            board[moveFrom.y][moveFrom.x] = vacio;
+                        }
                         return 1;
                     } else {
                         //If turn´s pieces are equal, then they are owned by the same player
