@@ -42,7 +42,7 @@ void init_game() {
 				readMoves(turn, moveFrom, moveTo, move, &validMove, board);
 			}
 			//Change turn to 1
-			turn++;
+			turn--;
 		} else if (turn == 1) {
 			//Get the movement instructions if it is a not valid move, it repeats the code until getting a valid move
 			while(validMove == 0) {
@@ -52,7 +52,7 @@ void init_game() {
 				readMoves(turn, moveFrom, moveTo, move, &validMove, board);
 			}
 			//Change turn to 0
-			turn--;
+			turn++;
 		}
 	}
 	show_scores(2);
