@@ -4,6 +4,9 @@
     <# game number > - <player1 nick> "vs" <player2 nick> - <winner>
 */
 
+#ifndef SCORES_H_INCLUDED
+#define SCORES_H_INCLUDED
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -68,3 +71,5 @@ void read(FILE *archivo)
     fread(&playerScore1, sizeof(playerScore1), 1, archivo);
   }
 }
+
+#endif // SCORES_H_INCLUDED
