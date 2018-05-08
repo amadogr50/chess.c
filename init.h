@@ -7,6 +7,7 @@
 #include "board.h"
 #include "moves.h"
 #include "cmv.h"
+#include "scores.h"
 
 void readMoves(int turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], int *validMove, piece board[8][8]){
 	//Function to determinate
@@ -29,7 +30,6 @@ void init_game() {
 	//Game bucle
 	int validMove;
 	while (validateCheckmate(board) == 0) {
-		system("pause");
 		system("cls");
 		display_board(board);
 		validMove = 0;
