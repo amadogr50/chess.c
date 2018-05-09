@@ -32,7 +32,7 @@ void generate_board(piece board[8][8]) {
 	piece w_b2 = {2, BISHOP, 'B'};
 	piece w_t1 = {2, TOWER, 'T'};
 	piece w_t2 = {2, TOWER, 'T'};
-	piece w_queen = {1, QUEEN, 'q'};
+	piece w_queen = {2, QUEEN, 'Q'};
 	piece w_king = {2, KING, 'K'};
 	piece vacio = {0, BLANK, ' '};
 
