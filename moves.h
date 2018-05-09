@@ -26,35 +26,34 @@ int isInside(coordinate moveTo, piece board[8][8]){
 
 int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
     //Function to determine if the direction of the piece´s movement is empty
-    int right, left, up, down, direction;
-
-    if (right){
-        if (up) {
+    short direction;
+    if (moveFrom.x < moveTo.x){
+        if (moveFrom.y < moveTo.y) {
             direction = 5;
-        } else if (down) {
+        } else if (moveFrom.y > moveTo.y) {
             direction = 7;
         } else {
             direction = 1;
         }
-    } else if (left) {
-        if (up) {
+    } else if (moveFrom.x > moveTo.x) {
+        if (moveFrom.y < moveTo.y) {
             direction = 6;
-        } else if (down) {
+        } else if (moveFrom.y > moveTo.y) {
             direction = 8;
         } else {
             direction = 2;
         }
     } else {
-        if (up) {
+        if (moveFrom.y < moveTo.y) {
             direction = 3;
-        } else if (down) {
+        } else if (moveFrom.y > moveTo.y) {
             direction = 4;
         }
     }
 
     switch (direction) {
         case 1: //Right
-            for (int i = moveFrom.x; i < moveTo.x; i++) {
+            for (int i = moveFrom.x + 1; i < moveTo.x; i++) {
                 if ( board[moveTo.y][i].type != 7) {
                     return 0;
                 }
@@ -62,7 +61,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 2: //Left
-            for (int i = moveFrom.x; i > moveTo.x; i--) {
+            for (int i = moveFrom.x - 1; i > moveTo.x; i--) {
                 if ( board[moveTo.y][i].type != 7) {
                     return 0;
                 }
@@ -70,7 +69,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 3: //Up
-            for (int i = moveFrom.y; i < moveTo.y; i++) {
+            for (int i = moveFrom.y + 1; i < moveTo.y; i++) {
                 if ( board[i][moveFrom.x].type != 7) {
                     return 0;
                 }
@@ -78,7 +77,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 4: //Down
-            for (int i = moveFrom.y; i > moveTo.y; i--) {
+            for (int i = moveFrom.y - 1; i > moveTo.y; i--) {
                 if ( board[i][moveFrom.x].type != 7) {
                     return 0;
                 }
@@ -86,7 +85,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 5: //Diagonal Right Up
-            for (int i = moveFrom.x, j = moveFrom.y; i < moveTo.x && j < moveTo.y; i++, j++ ) {
+            for (int i = moveFrom.x + 1, j = moveFrom.y + 1; i < moveTo.x && j < moveTo.y; i++, j++ ) {
                 if ( board[j][i].type != 7 ) {
                     return 0;
                 }
@@ -94,7 +93,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 6: //Diagonal Left Up
-            for (int i = moveFrom.x, j = moveFrom.y; i > moveTo.x && j < moveTo.y; i--, j++ ) {
+            for (int i = moveFrom.x - 1, j = moveFrom.y + 1; i > moveTo.x && j < moveTo.y; i--, j++ ) {
                 if ( board[j][i].type != 7 ) {
                     return 0;
                 }
@@ -102,7 +101,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 7: //Diagonal Right Down
-            for (int i = moveFrom.x, j = moveFrom.y; i < moveTo.x && j > moveTo.y; i++, j-- ) {
+            for (int i = moveFrom.x + 1, j = moveFrom.y - 1; i < moveTo.x && j > moveTo.y; i++, j-- ) {
                 if ( board[j][i].type != 7 ) {
                     return 0;
                 }
@@ -110,7 +109,7 @@ int isEmpty (coordinate moveFrom, coordinate moveTo, piece board[8][8]) {
             return 1;
             break;
         case 8: //Diagonal Left Down
-            for (int i = moveFrom.x, j = moveFrom.y; i > moveTo.x && j > moveTo.y; i--, j-- ) {
+            for (int i = moveFrom.x - 1, j = moveFrom.y - 1; i > moveTo.x && j > moveTo.y; i--, j-- ) {
                 if ( board[j][i].type != 7 ) {
                     return 0;
                 }
