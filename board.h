@@ -2,7 +2,7 @@
 #include "defs.h"
 
 void generate_board(piece board[8][8]) {
-	piece b_p1 = {1, QUEEN, 'q'};
+	piece b_p1 = {1, PAWN, 'p'};
 	piece b_p2 = {1, PAWN, 'p'};
 	piece b_p3 = {1, PAWN, 'p'};
 	piece b_p4 = {1, PAWN, 'p'};
@@ -18,7 +18,7 @@ void generate_board(piece board[8][8]) {
 	piece b_t2 = {1, TOWER, 't'};
 	piece b_queen = {1, QUEEN, 'q'};
 	piece b_king = {1, KING, 'k'};
-	piece w_p1 = {2, QUEEN, 'Q'};
+	piece w_p1 = {2, PAWN, 'P'};
 	piece w_p2 = {2, PAWN, 'P'};
 	piece w_p3 = {2, PAWN, 'P'};
 	piece w_p4 = {2, PAWN, 'P'};
@@ -32,7 +32,7 @@ void generate_board(piece board[8][8]) {
 	piece w_b2 = {2, BISHOP, 'B'};
 	piece w_t1 = {2, TOWER, 'T'};
 	piece w_t2 = {2, TOWER, 'T'};
-	piece w_queen = {2, QUEEN, 'Q'};
+	piece w_queen = {1, QUEEN, 'q'};
 	piece w_king = {2, KING, 'K'};
 	piece vacio = {0, BLANK, ' '};
 
