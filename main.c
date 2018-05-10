@@ -50,11 +50,11 @@ int main(void) {
 		printf("\n1800-1999 = Jugador de club fuerte");
 		printf("\n2000-2199 = Experto Nacional");
 		printf("\n2200-2299 = Candidato a maestro");
-		printf("\n2300-2399 = Maestro Federación Internacional de Ajedrez");
+		printf("\n2300-2399 = Maestro Federacion Internacional de Ajedrez");
 		printf("\n2400-2499 = Maestro Internacional");
 		printf("\n2500-2599 = Gran Maestro");
 		printf("\n2600-2699 = Super Gran Maestro");
-		printf("\n2700-2799 = Candidato a Campeón del mundo");
+		printf("\n2700-2799 = Candidato a Campeon del mundo");
 		printf("\n+2800 = Campeon del mundo");
 		break;
 	case exit:
