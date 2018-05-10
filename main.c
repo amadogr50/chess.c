@@ -13,6 +13,7 @@
 #define new 1
 #define scores 2
 #define instructions 3
+#define rankings 4
 #define exit 0
 
 void welcome_screen();
@@ -23,7 +24,7 @@ int main(void) {
 		welcome_screen();
 		system("pause");
 		system("cls");
-	printf("WELCOME TO CHESS PE2018v1.0\n\nType one of the following:\n\t1: To start a new game\n\t2: To show the scoreboard\n\t3: To show the instructions\n\t0: To exit the game\n");
+	printf("WELCOME TO CHESS PE2018v1.0\n\nType one of the following:\n\t1: To start a new game\n\t2: To show the scoreboard\n\t3: To show the instructions\n\t4: To show the elo rankings\n\t0: To exit the game\n");
 	scanf("%d", &init);
 	switch (init) {
 	case new:
@@ -40,6 +41,21 @@ int main(void) {
 		system("cls");
 		printf("Instructions\n");
 		show_instructions();
+		break;
+	case rankings:
+		system("cls");
+		printf("\n1000-1399 = Principiante");
+		printf("\n1400-1599 = Aficionado");
+		printf("\n1600-1799 = Jugador de club medio");
+		printf("\n1800-1999 = Jugador de club fuerte");
+		printf("\n2000-2199 = Experto Nacional");
+		printf("\n2200-2299 = Candidato a maestro");
+		printf("\n2300-2399 = Maestro Federación Internacional de Ajedrez");
+		printf("\n2400-2499 = Maestro Internacional");
+		printf("\n2500-2599 = Gran Maestro");
+		printf("\n2600-2699 = Super Gran Maestro");
+		printf("\n2700-2799 = Candidato a Campeón del mundo");
+		printf("\n+2800 = Campeon del mundo");
 		break;
 	case exit:
 		system("cls");

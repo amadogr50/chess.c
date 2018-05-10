@@ -26,7 +26,7 @@ int show_scores(int access_type)
 
   if(access_type == 2)
   {
-    if ((archivo = fopen("zscores.dat", "wb")) != NULL)
+    if ((archivo = fopen("zscores.dat", "ab")) != NULL)
       write(archivo);
     else
       printf("\n File couldn't open." );
@@ -46,18 +46,18 @@ int show_scores(int access_type)
 void write(FILE *archivo)
 {
   player playerScore1;
-  int i=0, answer;
+  int answer;
 printf("\nYou won!\n Wanna enter the scoreboard? (1-Yes, 0-No)");
 scanf("%d", &answer);
 
 if(answer == 1)
   {
-    i++;
-    playerScore1.pos = i;
+
     printf("\nEnter your name: ");
     scanf("%s", &playerScore1.scorename);
-    playerScore1.elo = (playerScore1.elo + 1) * 1200;
+    playerScore1.elo = (rand() % 1761) + 1000;
     fwrite(&playerScore1, sizeof(playerScore1), 1, archivo);
+
   }
 }
 
@@ -67,7 +67,6 @@ void read(FILE *archivo)
   fread(&playerScore1, sizeof(playerScore1), 1, archivo);
   while(!feof(archivo))
   {
-    printf("\nPosition: %d", playerScore1.pos);
     printf("\nName: %s", playerScore1.scorename);
     printf("\nScore: %d\n", playerScore1.elo);
     fread(&playerScore1, sizeof(playerScore1), 1, archivo);
