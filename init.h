@@ -8,6 +8,7 @@
 #include "moves.h"
 #include "cmv.h"
 #include "scores.h"
+#include "welcome.h"
 
 void readMoves(short turnPlayer, coordinate moveFrom, coordinate moveTo, char move[5], short *validMove, piece board[8][8], short *winner){
 	//Function to determinate
@@ -18,7 +19,7 @@ void readMoves(short turnPlayer, coordinate moveFrom, coordinate moveTo, char mo
 	*validMove = toMove(turnPlayer, moveFrom, moveTo, board, &winner);
 }
 
-void init_game() {
+void init_game(short ascii_art) {
 	//Creates the board and displays it for the first time
 	piece board[8][8];
 	generate_board(board);
@@ -32,6 +33,8 @@ void init_game() {
 	short validMove;
 	while (winner == 0) {
 		system("cls");
+		welcome_screen(ascii_art);
+		printf("\n");
 		display_board(board);
 		validMove = 0;
 		if (turn == 2){
