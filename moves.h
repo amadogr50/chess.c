@@ -152,7 +152,6 @@ int pawnPromotion () {
 int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
     //Takes type of piece and depending of it, aplies the corresping moving rules
     //return 1 = Valid move. return 0 = Not valid move
-    printf("%d\n", board[moveFrom.y][moveFrom.x].type);
     switch(board[moveFrom.y][moveFrom.x].type){
         case 1:   //Pawn validation
             //Determine which player is the owner
@@ -397,8 +396,8 @@ int validateMove(coordinate moveFrom, coordinate moveTo, piece board[8][8]){
             }
             break;
         case 6:   //King validation
-            if (moveTo.x > moveFrom.x - 1 && moveTo.x < moveFrom.x + 1) {
-                if (moveTo.y > moveFrom.y - 1 && moveTo.y < moveFrom.y + 1) {
+            if (moveTo.x >= moveFrom.x - 1 && moveTo.x <= moveFrom.x + 1) {
+                if (moveTo.y >= moveFrom.y - 1 && moveTo.y <= moveFrom.y + 1) {
                     return 1;
                 } else {
                     return 0;
